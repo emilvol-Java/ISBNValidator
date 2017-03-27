@@ -10,7 +10,13 @@ public class ValidateISBN {
 		
 		for (int i = 0; i < 10; i++)
 		{ 
-			if (!Character.isDigit(isbn.charAt(i))) throw new NumberFormatException("ISBN numbers can only contain numeric digits");
+			if (!Character.isDigit(isbn.charAt(i))) {
+					if(i == 9 && isbn.charAt(i) == 'X')	{
+						//this is okay
+					} 
+					else {
+					throw new NumberFormatException("ISBN numbers can only contain numeric digits");
+				}
 			total += isbn.charAt(i) * (10-i);
 		}
 		
@@ -23,3 +29,5 @@ public class ValidateISBN {
 	}
 
 }
+	
+}	
